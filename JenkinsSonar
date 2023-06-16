@@ -42,6 +42,7 @@ pipeline {
                  steps {
 		 
                    echo 'Deploying the change....'
+		   sonarSummaries()
 		  // snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'RiyaJenkins', 'buildVersion': ''}", securityToolId: "8fed51e8c347a550946e706dc0013164" // toolId: "8075de6f87e569100aaeea483cbb35c7"
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	//   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
