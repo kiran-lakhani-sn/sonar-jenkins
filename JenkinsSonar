@@ -51,7 +51,7 @@ pipeline {
 		    // snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "adffaa9e4370211072b7f6be5bb8f2ed", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'	
 		     //snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'
 		     // snDevOpsChange()
-		     // snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
+		      snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
 		     script{
                     changeNumber = snDevOpsGetChangeNumber()
                     echo '>> Deploy Stage -----'
@@ -68,7 +68,7 @@ pipeline {
                     //snDevOpsStep()     
                       echo "packageName - ${packageName}" 
 		      snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
-                       //snDevOpsPackage(name: "${packageName}", artifactsPayload:"""{"artifacts": [{"name": "${artifactname}","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "${repoName}"}]}""")
+                      snDevOpsPackage(name: "${packageName}", artifactsPayload:"""{"artifacts": [{"name": "${artifactname}","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "${repoName}"}]}""")
                     }
             }
 		 
