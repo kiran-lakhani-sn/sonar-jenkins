@@ -67,7 +67,7 @@ pipeline {
          steps {
                     //snDevOpsStep()     
                       echo "packageName - ${packageName}" 
-		      snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
+		     // snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
                       snDevOpsPackage(name: "${packageName}", artifactsPayload:"""{"artifacts": [{"name": "${artifactname}","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "${repoName}"}]}""")
                     }
             }
