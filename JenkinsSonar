@@ -38,7 +38,7 @@ pipeline {
              }
            }
        }
-      stage('Deploy') {
+      stage('Deploy1@#$') {
                  steps {
 		 
                    echo 'Deploying the change....'
@@ -67,8 +67,8 @@ pipeline {
          steps {
                     //snDevOpsStep()     
                       echo "packageName - ${packageName}" 
-		      snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : '98c65d8d83b7e510524b9b50ceaad3e1'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
-		      snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
+		     // snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : '98c65d8d83b7e510524b9b50ceaad3e1'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
+		     // snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
                      // snDevOpsPackage(name: "${packageName}", artifactsPayload:"""{"artifacts": [{"name": "${artifactname}","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "${repoName}"}]}""")
                     }
             }
