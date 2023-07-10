@@ -46,7 +46,7 @@ pipeline {
 		  // snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'RiyaJenkins', 'buildVersion': ''}", securityToolId: "8fed51e8c347a550946e706dc0013164" // toolId: "8075de6f87e569100aaeea483cbb35c7"
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version":"${artifactVersion}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
-		    snDevOpsChange(ignoreErrors:false)
+		    snDevOpsChange()
 		  // snDevOpsChange changeRequestDetails: '{ "attributes": { "short_description": "Testing","category": "DevOps", "chg_model": "e55d0bfec343101035ae3f52c1d3ae49", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'//standard
 		    // snDevOpsChange changeRequestDetails: '{ "attributes": { "chg_model": "adffaa9e4370211072b7f6be5bb8f2ed", "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'	
 		     //snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "standard", "standard_change_template": "508e02ec47410200e90d87e8dee49058"}}'
