@@ -15,7 +15,7 @@ pipeline {
 	 SCANNER_HOME = tool 'sonarScanner'
 	}  
   stages {
-       stage('Build') {
+       stage('Build !@') {
            steps {
               
               sh 'mvn -B -DskipTests clean compile'
@@ -42,6 +42,13 @@ pipeline {
                     snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	    snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
 		    snDevOpsChange(ignoreErrors:false)
+		    snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "normal"}}'
+		    script{
+                    changeNumber = snDevOpsGetChangeNumber()
+                    echo '>> Deploy Stage -----'
+                    sh "echo ${changeNumber}"
+                  
+                  }
                     
                  }
       }
