@@ -61,10 +61,10 @@ pipeline {
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		} else {
 			sh 'mvn clean verify sonar:sonar \
-			    -Dsonar.login=1926d793f92181dd0ac406335d4d4bea392a3023 \
+			    -Dsonar.login=1ff462f03228674e3a684569d716aad1aff286bb \
 			    -Dsonar.host.url=https://sonarcloud.io \
-			    -Dsonar.organization=pramaraju96 \
-			    -Dsonar.projectKey=pramaraju96_DevOps-Test'
+			    -Dsonar.organization=riyapulusuganti \
+			    -Dsonar.projectKey=riyapulusuganti_Demo'
 		}
 	}
 	timeout(time: 1, unit: 'MINUTES') {
