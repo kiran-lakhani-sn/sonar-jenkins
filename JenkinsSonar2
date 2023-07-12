@@ -56,24 +56,21 @@ pipeline {
       }
    }
    def sonarSummaries() {
-
-   //withSonarQubeEnv('Sonar_Cloud') {
-       //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
-	 //}
-
-    withSonarQubeEnv('sonarScanner'){
-      if(fileExists("sonar-project.properties")) {
-      	sh '${SCANNER_HOME}/bin/sonar-scanner'
-        } else {
-           // sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-   		  sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-project.properties'
-        }
-	  }
-   // timeout(time: 1, unit: 'MINUTES') {
-   //     waitForQualityGate abortPipeline: false
-   // }
-} // end of def
-
+	withSonarQubeEnv('sonarcloud.io'){
+		if(fileExists("sonar-project.properties")) {
+			sh '${SCANNER_HOME}/bin/sonar-scanner'
+		} else {
+			sh 'mvn clean verify sonar:sonar \
+			    -Dsonar.login=1926d793f92181dd0ac406335d4d4bea392a3023 \
+			    -Dsonar.host.url=https://sonarcloud.io \
+			    -Dsonar.organization=pramaraju96 \
+			    -Dsonar.projectKey=pramaraju96_DevOps-Test'
+		}
+	}
+	timeout(time: 1, unit: 'MINUTES') {
+		waitForQualityGate abortPipeline: false
+	}
+}
       
       
   
