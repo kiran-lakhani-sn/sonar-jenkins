@@ -61,7 +61,7 @@ pipeline {
        //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
 	 //}
 
-    withSonarQubeEnv('sonarQube_local'){
+    withSonarQubeEnv('sonarScanner'){
       if(fileExists("sonar-project.properties")) {
       	sh '${SCANNER_HOME}/bin/sonar-scanner'
         } else {
