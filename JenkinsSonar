@@ -28,7 +28,7 @@ pipeline {
        }
        stage('Test') {
            steps {
-	      //sonarSummaries()
+	      sonarSummaries()
               snDevOpsStep()
 	      sh 'mvn test'
            }
