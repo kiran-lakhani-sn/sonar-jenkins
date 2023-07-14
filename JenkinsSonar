@@ -81,7 +81,7 @@ pipeline {
   
      
      
-  //def sonarSummaries() {
+  def sonarSummaries() {
  //  withSonarQubeEnv('SonarCloud') {
     //   sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
  //  }
@@ -93,6 +93,6 @@ pipeline {
            // sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
    		  //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
        // }
- // }
+  }
    
-//}
+}
