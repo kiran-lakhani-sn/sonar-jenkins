@@ -28,13 +28,13 @@ pipeline {
        }
        stage('Test') {
            steps {
-	      sonarSummaries()
+	     // sonarSummaries()
               snDevOpsStep()
 	      sh 'mvn test'
            }
            post {
              always {
-                junit "**/target/surefire-reports/*.xml"
+               // junit "**/target/surefire-reports/*.xml"
              }
            }
        }
