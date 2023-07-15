@@ -17,7 +17,7 @@ pipeline {
                 echo 'Running test stage'
             }
         }
-        stage('Deploy#4%') {
+        stage('Deploy#4*&') {
             steps {
 		//sh 'mvn -B package --file pom.xml'    
                 echo 'Running deploy stage'
