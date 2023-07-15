@@ -18,11 +18,7 @@ pipeline {
             steps {
                 echo 'Running deploy stage'
             }
-            post{
-                always{
-                    snDevOpsChange()
-                    }
-                }   
+           
         }
     }
 }
