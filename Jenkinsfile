@@ -19,6 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+		sh 'mvn -B package --file pom.xml'    
                 echo 'Running deploy stage'
                 //sonarSummaries()
 		 //snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github'}"
