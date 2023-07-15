@@ -43,7 +43,7 @@ pipeline {
 		 
                    echo 'Deploying the change....'
 		  // sonarSummaries()
-		    sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=balu-sn-devops_First_repo -Dsonar.organization=First_repo -Dsonar.host.url=http://sonarqube1.sndevops.xyz/ -Dsonar.login=3dc9eb4459800df74ddf2421ec6a3ed986af3090 -Dsonar.java.binaries=target/ -Dsonar.branch.name=master'
+		  sh '${SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=balu-sn-devops_First_repo -Dsonar.organization=First_repo -Dsonar.host.url=http://sonarqube1.sndevops.xyz/ -Dsonar.login=3dc9eb4459800df74ddf2421ec6a3ed986af3090 -Dsonar.java.binaries=target/ -Dsonar.branch.name=master'
 		  // snDevOpsSecurityResult securityResultAttributes: "{'applicationName': 'RiyaJenkins', 'buildVersion': ''}", securityToolId: "8fed51e8c347a550946e706dc0013164" // toolId: "8075de6f87e569100aaeea483cbb35c7"
                    snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
            	   snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version":"${artifactVersion}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
@@ -79,21 +79,4 @@ pipeline {
      
   }
  
-  
-     
-     
- /* def sonarSummaries() {
- //  withSonarQubeEnv('SonarCloud') {
-    //   sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner-cloud.properties'
- //  }
-  withSonarQubeEnv('sonarQube_local'){
-      
-    //  if(fileExists("sonar-project.properties")) {
-      //	sh '${SCANNER_HOME}/bin/sonar-scanner'
-       // } else {
-           // sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/qa-sonar-scanner.properties'
-   		  //sh '${SCANNER_HOME}/bin/sonar-scanner -Dproject.settings=${SCANNER_HOME}/conf/sonar-scanner.properties'
-       // }
   }
-   
-}*/
