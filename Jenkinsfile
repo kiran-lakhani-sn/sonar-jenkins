@@ -21,7 +21,7 @@ pipeline {
             steps {
                 echo 'Running deploy stage'
                 //sonarSummaries()
-		 snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github'}"
+		 //snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github'}"
             }
            
         }
