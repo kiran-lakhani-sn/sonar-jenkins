@@ -7,7 +7,7 @@ pipeline {
 		SCANNER_HOME = tool 'sonarScanner'
     }
     stages {
-        stage('Build!@$#@$@') {
+        stage('Build') {
             steps {
                 echo 'Running build stage'
             }
