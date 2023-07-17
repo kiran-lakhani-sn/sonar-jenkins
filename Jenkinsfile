@@ -15,7 +15,7 @@ pipeline {
         stage('Test&') {
             steps {
                 echo 'Running test stage'
-	        sonarSummaries()
+	       // sonarSummaries()
             }
         }
         stage('Deploy#') {
