@@ -18,7 +18,7 @@ pipeline {
 	        sonarSummaries()
             }
         }
-        stage('Deploy') {
+        stage('Deploy#') {
             steps {
 		//sh 'mvn -B package --file pom.xml'    
                 echo 'Running deploy stage'
