@@ -37,7 +37,7 @@ pipeline {
              }
            }
        }
-      stage('Deploy1@#!') {
+      stage('Deploy1@!') {
                  steps {
 		 echo 'Deploying the ....'
                  sonarSummaries()
