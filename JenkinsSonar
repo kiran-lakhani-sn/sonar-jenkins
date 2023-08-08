@@ -23,6 +23,7 @@ pipeline {
            steps {
               
               sh 'mvn -B -DskipTests clean compile'
+	      snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
 
            }
        }
@@ -40,7 +41,7 @@ pipeline {
       stage('Deploy1@!') {
                  steps {
 		 echo 'Deploying the ....'
-		 snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : 'b866c7429398311065edfca86cba104c'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
+		// snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : 'b866c7429398311065edfca86cba104c'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
                 // sonarSummaries()
                  sleep 10
 		  
@@ -51,8 +52,8 @@ pipeline {
          steps {
                       
                       echo "packageName - ${packageName}" 
-		      snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : 'b866c7429398311065edfca86cba104c'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
-		     // snDevOpsChange()
+		      //snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : 'b866c7429398311065edfca86cba104c'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
+		      snDevOpsChange()
                       }
             }
 		 
