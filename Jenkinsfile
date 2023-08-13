@@ -25,7 +25,8 @@ pipeline {
 	      //  snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github'}"
 		// veracode applicationName: "PetStoreAPI-Github", criticality: 'VeryHigh', debug: true, timeout: 20, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${BUILD_TAG}", uploadExcludesPattern: '', uploadIncludesPattern: 'target/DemoMavenProject*', vid: "5a57339d6779ffb76782e03df3f6e9d1", vkey: "f31d151c427a3286469a6291b14dee15e7f553e066b32c801f09014dc3282de4f51a81cd0bde7c7dd9d95de9a71a32c8a2c582158f278320ae765fe9fd232e0a", waitForScan : true
 		//snDevOpsChange() 
-	        snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "Standard", "template": "9bae57fac3ec7910f11d364115013166"}}'
+	        //snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "Standard", "template": "9bae57fac3ec7910f11d364115013166"}}'
+		    snDevOpsChange changeRequestDetails: '{ "attributes": { "type": "Emergency", "standard_change_template": "62d10fa1c303101035ae3f52c1d3aec1"}}'
             }
            
         }
