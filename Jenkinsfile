@@ -25,7 +25,7 @@ pipeline {
 	      //  snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github'}"
 		// veracode applicationName: "PetStoreAPI-Github", criticality: 'VeryHigh', debug: true, timeout: 20, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${BUILD_TAG}", uploadExcludesPattern: '', uploadIncludesPattern: 'target/DemoMavenProject*', vid: "5a57339d6779ffb76782e03df3f6e9d1", vkey: "f31d151c427a3286469a6291b14dee15e7f553e066b32c801f09014dc3282de4f51a81cd0bde7c7dd9d95de9a71a32c8a2c582158f278320ae765fe9fd232e0a", waitForScan : true
 		//snDevOpsChange() 
-	        snDevOpsChange changeRequestDetails: '{ "attributes": {"type": "normal", "template": "4b175dd20a0a0b99004f35e506563fc6"}}'
+	        snDevOpsChange changeRequestDetails: '{ "attributes": {"type": "normal","change_approval_group": "a715cd759f2002002920bde8132e7018","template": "4b175dd20a0a0b99004f35e506563fc6"}}'
 		 // snDevOpsChange changeRequestDetails: '{ "attributes": { "short_description": "Test description", "priority": "1", "start_date": "2021-02-05 08:00:00", "end_date": "2022-04-05 08:00:00", "justification": "test justification", "description": "test description", "cab_required": true, "comments": "This update for work notes is from jenkins file", "work_notes": "test work notes", "assignment_group": "a715cd759f2002002920bde8132e7018" }, "setCloseCode": false }'
             }
            
