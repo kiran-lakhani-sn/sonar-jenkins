@@ -30,7 +30,7 @@ pipeline {
 		//snDevOpsChange() 
 	        // snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "62d10fa1c303101035ae3f52c1d3aec1"}}'
 		
-		stageName = "Create_Change"
+		stageName = "Deploy"
 		snDevOpsChange()
 		changeRequestNumber = snDevOpsGetChangeNumber(changeDetails: """{"stage_name":"${stageName}"}""")
 		echo "${changeRequestNumber}"
