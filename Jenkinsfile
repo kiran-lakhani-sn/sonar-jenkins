@@ -1,4 +1,5 @@
 def changeRequestNumber = "null"
+def stageName = "STAGE"
 pipeline {
     agent any
     tools {
