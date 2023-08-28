@@ -9,12 +9,12 @@ pipeline {
 		SCANNER_HOME = tool 'sonarScanner'
     }
     stages {
-        stage('Build@!') {
+        stage('BuildStage') {
             steps {
                 echo 'Running build stage'
             }
         }
-        stage('Test&') {
+        stage('TestStage') {
             steps {
                 echo 'Running test stage'
 	       // sonarSummaries()
