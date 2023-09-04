@@ -1,4 +1,4 @@
-name: CustomActionGetWorkflow
+name: CustomActionGetWorkflowSN
 on: 
   workflow_dispatch:
 
