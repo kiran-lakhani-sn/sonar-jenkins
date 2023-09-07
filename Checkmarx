@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Fetch Project') {
+            steps {
+                echo 'Fetching Project'
+                //checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/akhandpratapsingh/ProjectWithTestCasesRename']]])
+            }
+        }
+        stage('Scan Checkmarx') {
+            steps {
+                echo 'Scan Checkmarx'
+                checkmarxASTScanner additionalOptions: '', baseAuthUrl: '', branchName: 'main', checkmarxInstallation: 'CheckmarxCloud', credentialsId: '', projectName: 'JenkinsPipleineCxOne', serverUrl: '', tenantName: ''
+            }
+        }
+    }
+}
