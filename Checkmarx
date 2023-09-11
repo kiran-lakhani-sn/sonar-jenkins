@@ -11,7 +11,8 @@ pipeline {
         stage('Scan Checkmarx') {
             steps {
                 echo 'Scan Checkmarx'
-                checkmarxASTScanner additionalOptions: '', baseAuthUrl: '', branchName: 'main', checkmarxInstallation: 'CheckmarxCloud', credentialsId: '', projectName: 'JenkinsPipleineCxOne', serverUrl: '', tenantName: ''
+                //checkmarxASTScanner additionalOptions: '', baseAuthUrl: '', branchName: 'main', checkmarxInstallation: 'CheckmarxCloud', credentialsId: '', projectName: 'JenkinsPipleineCxOne', serverUrl: '', tenantName: ''
+                  {"scanner": "CheckmarxOne", "projectName": "", "projectId": "", "scanId": "", "securityToolId": ""}
             }
         }
     }
