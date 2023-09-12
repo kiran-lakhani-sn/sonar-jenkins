@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Scan Checkmarx'
                 //checkmarxASTScanner additionalOptions: '', baseAuthUrl: '', branchName: 'main', checkmarxInstallation: 'CheckmarxCloud', credentialsId: '', projectName: 'JenkinsPipleineCxOne', serverUrl: '', tenantName: ''
-                 snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Checkmarx SAST", "projectId": "1076","securityToolId": "38e4149847d9f1504c2ce977746d4337"}'
+                 snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Checkmarx SAST", "projectId": "1076","securityToolId": "766ea99b87cdf150c67da8673cbb3560"}'
                  snDevOpsChange() 
             }
         }
