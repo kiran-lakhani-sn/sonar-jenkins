@@ -1,26 +1,36 @@
 pipeline {
-   agent any
-   stages {
-       stage("Build") {
-                steps {
-                    echo "Building"
-                    snDevOpsChange()
-                    
-                }
-       }
-        stage("Test") {
-           steps {
-               echo "Testing"
+    agent any
+stages {
 
-           }
-          
-        }
-     stage("Deploy") {
-             steps{
-                  echo ">> Deploy in prod"
-                  snDevOpsChange()
+           
+         stage('Build-Step') {
+ 
+             steps {
+                     echo 'Build Step 23 '
+             }
+         }
+     
+
+        stage('Change-Step') {
+              steps {
+                  echo 'Change Step'
+                  //snDevOpsChange()
+                  //snDevOpsChange changeRequestDetails: '{ "autoCloseChange": false, "setCloseCode":false, attributes:{"close_notes":"Closed By Narendar"} }'
+                    snDevOpsChange changeRequestDetails: '{ "autoCloseChange": true, "setCloseCode":false, attributes:{"close_notes":"Closed By Narendar"} }'
               }
-      }      
-      
-  }
+        }
+        
+        stage('Test') {
+           steps {
+              
+              sh 'mvn test'
+           }
+           post {
+             always {
+                junit "**/target/surefire-reports/*.xml"
+             }
+           }
+       }
+}
+   
 }
