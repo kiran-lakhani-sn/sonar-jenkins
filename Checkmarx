@@ -12,7 +12,12 @@ pipeline {
             steps {
                 echo 'Scan Checkmarx'
                 //checkmarxASTScanner additionalOptions: '', baseAuthUrl: '', branchName: 'main', checkmarxInstallation: 'CheckmarxCloud', credentialsId: '', projectName: 'JenkinsPipleineCxOne', serverUrl: '', tenantName: ''
-                 snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Checkmarx SAST", "projectId": "1076","securityToolId": "766ea99b87cdf150c67da8673cbb3560"}'
+                // snDevOpsSecurityResult securityResultAttributes: '{"scanner": "Checkmarx SAST", "projectId": "1076","securityToolId": "766ea99b87cdf150c67da8673cbb3560"}'
+                snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Checkmarx One', 'projectName': 'DemoProject', 'projectId': '75acb348-c054-4ab3-807d-e17e92a923ab', 'scanId': '2bb9e016-3669-488c-8341-ffa4831221f3', 'securityToolId': 'a7e5b430c3adb550946e706dc0013101'}"
+                // scanner: Scanning tool and is required e.g. Checkmarx One.
+                // projectName/projectId: Name/Id of your Checkmarx One project and is required. This attribute is applicable only for Checkmarx One.
+                // scanId: Checkmarx One scan id and is optional. This attribute is applicable only for Checkmarx One.
+                // securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
                  snDevOpsChange() 
             }
         }
