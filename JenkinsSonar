@@ -28,7 +28,7 @@ pipeline {
 
            }
        }
-       stage('Test') {
+       stage('Test @2') {
            steps {
 	     snDevOpsStep()
 	      sh 'mvn test'
