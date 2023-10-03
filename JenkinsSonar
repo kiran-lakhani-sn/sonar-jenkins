@@ -49,7 +49,7 @@ pipeline {
             }
 	}
 		 
-       stage('pre prod deploy') { 
+       stage('prod deploy') { 
          steps {
                       
                       echo "packageName - ${packageName}" 
