@@ -12,8 +12,7 @@ stages {
                       }
          }
     
-         }
-     }
+      }
 
      stage('Change-Step') {
               steps {
@@ -23,7 +22,7 @@ stages {
                     snDevOpsChange changeRequestDetails: '{ "autoCloseChange": true, "setCloseCode":false, attributes:{"close_notes":"Closed By Narendar"} }'
               }
         }
-        
+     }   
 }
    
 
