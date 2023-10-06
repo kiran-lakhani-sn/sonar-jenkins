@@ -7,6 +7,14 @@ stages {
  
              steps {
                      echo 'Build Step 23 '
+                    when {
+                    anyOf {
+                        expression {
+                            return (env.GIT_BRANCH.equals('main') || env.GIT_BRANCH.startsWith('hotfix-'))
+                            snDevOpsChange()
+                        }
+                    }
+                }
              }
          }
      
