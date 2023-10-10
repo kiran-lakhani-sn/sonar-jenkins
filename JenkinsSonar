@@ -54,7 +54,7 @@ pipeline {
                       
                       echo "packageName - ${packageName}" 
 		      //snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : 'b866c7429398311065edfca86cba104c'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
-		      snDevOpsChange()
+		       snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "5f84726597bd3d909425340e6253af39"}}'
                       }
             }
 		 
