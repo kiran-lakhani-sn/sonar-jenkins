@@ -1,17 +1,26 @@
 def changeRequestNumber = "null"
-def stageName = "STAGE"
+def stageName = "Deploy"
+def artifactname = "devops-snow-build-app.jar"
+def repoName = "JenkinsDevOpsProject"
+def semanticVersion = "${env.BUILD_NUMBER}.0.0"
+def packageName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
+def version = "${env.BUILD_NUMBER}.0"
+def pkgName = "devops-snow-build-pkg_${env.BUILD_NUMBER}"
+
 pipeline {
     agent any
     tools {
         maven "Maven"
     }
-    environment {
-		SCANNER_HOME = tool 'sonarScanner'
-    }
+  //   environment {
+		// SCANNER_HOME = tool 'sonarScanner'
+  //   }
     stages {
         stage('BuildStage') {
             steps {
                 echo 'Running build stage'
+		snDevOpsArtifact(artifactsPayload: """{"artifacts": [{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}","semanticVersion": "1.${env.BUILD_NUMBER}.0","repositoryName": "${repoName}"}],"branchName":"master"}""")
+           	snDevOpsPackage(name: "${pkgName}-${env.BUILD_NUMBER}", artifactsPayload: """{"artifacts":[{"name": "${artifactname}", "version": "1.${env.BUILD_NUMBER}", "repositoryName": "${repoName}"}], "branchName":"master"}""")
             }
         }
         stage('TestStage') {
@@ -25,13 +34,11 @@ pipeline {
 		script{
 		//sh 'mvn -B package --file pom.xml'    
                 echo 'Running deploy stage' 
-	        //snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github','securityToolId' : 'c9db11db8764f1100801cb38dabb3531'}"
+	        snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github','securityToolId' : 'c9db11db8764f1100801cb38dabb3531'}"
 		// veracode applicationName: "PetStoreAPI-Github", criticality: 'VeryHigh', debug: true, timeout: 20, fileNamePattern: '', pHost: '', pPassword: '', pUser: '', replacementPattern: '', sandboxName: '', scanExcludesPattern: '', scanIncludesPattern: '', scanName: "${BUILD_TAG}", uploadExcludesPattern: '', uploadIncludesPattern: 'target/DemoMavenProject*', vid: "5a57339d6779ffb76782e03df3f6e9d1", vkey: "f31d151c427a3286469a6291b14dee15e7f553e066b32c801f09014dc3282de4f51a81cd0bde7c7dd9d95de9a71a32c8a2c582158f278320ae765fe9fd232e0a", waitForScan : true
 		// snDevOpsChange() 
-	         snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "62d10fa1c303101035ae3f52c1d3aec1"}}'
-		
+	        snDevOpsChange changeRequestDetails: '{ "attributes": {"chg_model": "62d10fa1c303101035ae3f52c1d3aec1"}}'
 		stageName = "Deploy"
-		snDevOpsChange()
 		changeRequestNumber = snDevOpsGetChangeNumber(changeDetails: """{"stage_name":"${stageName}"}""")
 		echo "${changeRequestNumber}"
 		snDevOpsUpdateChangeInfo(changeRequestDetails: """{"close_code": "successful", "state": "3", "close_notes": "Deployment to PROD was successful test 123", "short_description": "Test description in Get_Change Step by", "priority": "1", "justification": "test justification", "description": "test description",  "cab_required": true, "comments": "This update for work notes is from jenkins file", "work_notes": "Update of change request through Update API"}""", changeRequestNumber: """${changeRequestNumber}""")
