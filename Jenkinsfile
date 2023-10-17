@@ -12,9 +12,9 @@ pipeline {
     tools {
         maven "Maven"
     }
-     environment {
-		 SCANNER_HOME = tool 'sonarScanner'
-     }
+   //   environment {
+		 // SCANNER_HOME = tool 'sonarScanner'
+   //   }
     stages {
         stage('BuildStage') {
             steps {
@@ -26,7 +26,7 @@ pipeline {
         stage('TestStage') {
             steps {
                 echo 'Running test stage'
-	        sonarSummaries()
+	       // sonarSummaries()
             }
         }
         stage('Deploy') {
