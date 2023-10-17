@@ -12,9 +12,9 @@ pipeline {
     tools {
         maven "Maven"
     }
-  //   environment {
-		// SCANNER_HOME = tool 'sonarScanner'
-  //   }
+     environment {
+		 SCANNER_HOME = tool 'sonarScanner'
+     }
     stages {
         stage('BuildStage') {
             steps {
