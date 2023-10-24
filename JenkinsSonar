@@ -43,7 +43,7 @@ pipeline {
                  steps {
 		 echo 'Deploying the ....'
 		 snDevOpsSecurityResult securityResultAttributes: "{'scanner': 'Veracode','applicationName': 'PetStoreAPI-Github', 'securityToolId' : '5d8cbe8ec38a31108a432e0ad001315e'}" //'securityToolId' : '05bf3d33c32f2110cd4cf92f0501311b'}"	
-                 //sonarSummaries()
+                 sonarSummaries()
                  sleep 10
 		  
             }
