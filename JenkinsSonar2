@@ -58,7 +58,7 @@ pipeline {
       }
    }
    def sonarSummaries() {
-	withSonarQubeEnv('http://34.229.47.174'){
+	withSonarQubeEnv('sonarcloud.io'){
 	   if(fileExists("sonar-project.properties")) {
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		} else {
