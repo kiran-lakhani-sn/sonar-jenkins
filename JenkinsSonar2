@@ -63,10 +63,10 @@ pipeline {
 			sh '${SCANNER_HOME}/bin/sonar-scanner'
 		} else {
 			sh 'mvn clean verify sonar:sonar \
-			    -Dsonar.login=squ_5bc307be3f5f5365208542bd0faa57b10b8f7125 \
-			    -Dsonar.host.url=https://sonarqube.k8s.sndevops.xyz/ \
+			    -Dsonar.login=ea2e020b66e804eba3c14ecb7622ab9d611fbffc \
+			    -Dsonar.host.url=http://34.229.47.174/ \
 			   # -Dsonar.organization=riyapulusuganti \
-			    -Dsonar.projectKey=Software_Quality_Scans_Software_Quality_Scans_AYvTgF3_zmNORx9a6dw9'
+			    -Dsonar.projectKey=AutomationProj1-donotdelete'
 		}
 	}
 	//timeout(time: 1, unit: 'MINUTES') {
